@@ -1,29 +1,49 @@
 package com.kingjakeu.domain.member.domain;
 
 import lombok.*;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.time.LocalDateTime;
 
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Getter
 @Entity
-@ToString(of = {"id", "nationCode"})
+@ToString(of = {"uuid", "email", "userName"})
 public class Member {
 
     @Id
-    @GeneratedValue
-    private Long id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "uuid", updatable = false)
+    private Long uuid;
 
-    @Column(length = 2, nullable = false)
-    private String nationCode;
+    @Column(name = "email", length = 50, nullable = false, unique = true)
+    private String email;
 
+    @Column(name = "password", length = 50, nullable = false)
+    private String password;
+
+    @Column(name = "user_name", length = 30, nullable = false)
+    private String userName;
+
+    @Column(length = 10, nullable = false)
+    private String memberStatus;
+
+    @CreationTimestamp
+    @Column(name = "create_dt", nullable = false)
+    private LocalDateTime creationDateTime;
+
+    @UpdateTimestamp
+    @Column(name = "update_dt", nullable = false)
+    private LocalDateTime updatedDateTime;
 
     @Builder
-    public Member(String nationCode){
-        this.nationCode = nationCode;
+    public Member(String email, String password, String userName){
+        this.email = email;
+        this.password = password;
+        this.userName = userName;
+        this.memberStatus = "Normal";
     }
 
 }

@@ -10,9 +10,15 @@ import lombok.Setter;
 @NoArgsConstructor
 public class MemberSignUpRequestDto {
 
-    private String nationCode;
+    private String email;
+    private String password;
+    private String userName;
 
     public Member toEntity(){
-        return Member.builder().nationCode(nationCode).build();
+        return Member.builder()
+                .email(email)
+                .password(password)
+                .userName(userName)
+                .build();
     }
 }

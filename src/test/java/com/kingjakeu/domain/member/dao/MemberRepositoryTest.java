@@ -33,14 +33,6 @@ public class MemberRepositoryTest {
     @Test
     public void saveMember(){
 
-        memberRepository.save(Member.builder().nationCode("KR").build());
-
-        List<Member> memberList = memberRepository.findAll();
-
-        Member member = memberList.get(0);
-        log.info(member.toString());
-        assertThat(member.getNationCode(), is("KR"));
-
     }
 
 }
