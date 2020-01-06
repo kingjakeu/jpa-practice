@@ -1,0 +1,18 @@
+POST http://localhost:8080/shoe/register
+Content-Type: application/json
+
+{
+  "name" : "air yeezy 2",
+  "brand" : "nike",
+  "releaseDate" : "2020-01-22T10:00:00"
+}
+
+###
+GET http://localhost:8080/shoe/upcomming-list
+Content-Type: application/json
+
+{
+  "name" : "air yeezy 2"
+}
+
+###

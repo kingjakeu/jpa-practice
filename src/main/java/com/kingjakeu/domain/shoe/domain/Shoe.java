@@ -1,33 +1,32 @@
 package com.kingjakeu.domain.shoe.domain;
 
 
-import lombok.AccessLevel;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.time.LocalDateTime;
 
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Getter
 @Entity
+@ToString(of = {"uuid", "name", "brand", "releaseDateTime"})
 public class Shoe {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "uuid", updatable = false)
     private Long uuid;
 
+    @Column(name = "brand", length = 50, nullable = false)
     private String brand;
 
+    @Column(name = "name", length = 50, nullable = false)
     private String name;
 
-    @UpdateTimestamp
     @Column(name = "release_dt", nullable = false)
-    private LocalDateTime releasedDateTime;
+    private LocalDateTime releaseDateTime;
 
     @CreationTimestamp
     @Column(name = "create_dt", nullable = false)
@@ -38,8 +37,9 @@ public class Shoe {
     private LocalDateTime updatedDateTime;
 
     @Builder
-    public Shoe(String name, String brand){
+    public Shoe(String name, String brand, LocalDateTime releaseDateTime){
         this.name = name;
         this.brand = brand;
+        this.releaseDateTime = releaseDateTime;
     }
 }
