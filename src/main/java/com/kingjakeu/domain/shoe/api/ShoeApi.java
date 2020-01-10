@@ -23,14 +23,21 @@ public class ShoeApi {
         shoeRepository.save(dto.toEntity());
     }
 
-    @GetMapping("/upcomming-list")
-    public List<Shoe> getShoeList(@RequestBody ShoeListRequestDto dto){
-        shoeRepository.findAll();
-        List<Shoe> shoes = shoeRepository.findByName(dto.getName());
-        for(Shoe shoe : shoes){
-            log.info(shoe.toString());
-        }
-        return shoes;
+    @PostMapping("/modify")
+    public void modifyShoe(@RequestBody ShoeRegisterRequestDto dto){
+
     }
+
+    @PostMapping("/delete")
+    public void deleteShoe(@RequestBody ShoeRegisterRequestDto dto){
+
+    }
+
+    @PostMapping("/search")
+    public void searchShoe(@RequestBody ShoeListRequestDto dto){
+
+    }
+
+
 
 }
