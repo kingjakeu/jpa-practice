@@ -2,10 +2,14 @@ package com.kingjakeu.domain.wishlist.domain;
 
 
 import lombok.AccessLevel;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 
 import javax.persistence.*;
+import java.time.LocalDateTime;
 
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Getter
@@ -22,5 +26,17 @@ public class WishList {
 
     private String status;
 
-    private String updatedDateTime;
+    @CreationTimestamp
+    @Column(name = "create_dt", nullable = false)
+    private LocalDateTime creationDateTime;
+
+    @UpdateTimestamp
+    @Column(name = "update_dt", nullable = false)
+    private LocalDateTime updatedDateTime;
+
+    @Builder
+    public WishList(Long memberUuid, Long shoeUuid){
+        this.memberUuid = memberUuid;
+        this.shoeUuid = shoeUuid;
+    }
 }
