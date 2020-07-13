@@ -1,6 +1,6 @@
-package com.kingjakeu.domain.member.dto;
+package com.kingjakeu.springstudy.domain.member.dto;
 
-import com.kingjakeu.domain.member.domain.Member;
+import com.kingjakeu.springstudy.domain.member.domain.Member;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -9,16 +9,13 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 public class MemberSignUpRequestDto {
-
-    private String email;
-    private String password;
     private String userName;
+    private String password;
 
     public Member toEntity(){
         return Member.builder()
-                .email(email)
-                .password(password)
-                .userName(userName)
+                .userName(this.userName)
+                .password(this.password)
                 .build();
     }
 }

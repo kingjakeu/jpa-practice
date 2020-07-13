@@ -1,11 +1,13 @@
-package com.kingjakeu;
+package com.kingjakeu.springstudy;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class ApiApp {
+public class SpringStudyApplication {
+
     public static void main(String[] args) {
-        SpringApplication.run(ApiApp.class);
+        SpringApplication.run(SpringStudyApplication.class, args);
     }
+
 }
