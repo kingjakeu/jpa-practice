@@ -1,9 +1,6 @@
 package com.kingjakeu.springstudy.domain.member.domain;
 
-import lombok.AccessLevel;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -26,8 +23,12 @@ public class Member {
     @Column(nullable = false)
     private String password;
 
+    @Column
+    @Setter
+    private String profilePicUrl;
+
     @Builder
-    public Member(String userName, String password){
+    public Member(String userName, String password, String profilePicUrl){
         this.userName = userName;
         this.password = password;
     }
