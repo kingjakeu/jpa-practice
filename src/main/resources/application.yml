@@ -2,3 +2,13 @@ spring:
   h2:
     console:
       enabled: true
+  profiles:
+    active: local
+logging:
+  level:
+    root: info
+  file:
+    max-size: 10MB
+    path: /logs
+    name: log
+    max-history: 36
