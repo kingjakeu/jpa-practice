@@ -1,4 +1,4 @@
-POST http://localhost:8080/member/signup
+POST http://localhost:5000/member/signup
 Content-Type: application/json
 
 {
@@ -7,3 +7,6 @@ Content-Type: application/json
 }
 
 ###
+
+GET http://localhost:5000/member/
+Content-Type: application/json

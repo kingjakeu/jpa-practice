@@ -4,10 +4,7 @@ import com.kingjakeu.springstudy.domain.member.dao.MemberRepository;
 import com.kingjakeu.springstudy.domain.member.dto.MemberSignUpRequestDto;
 import io.swagger.annotations.ApiOperation;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/member")
@@ -20,5 +17,10 @@ public class MemberController {
     @ApiOperation(value = "회원 가입")
     public void signUpMember(@RequestBody MemberSignUpRequestDto dto){
         this.memberRepository.save(dto.toEntity());
+    }
+
+    @GetMapping("/")
+    public String getMember(){
+        return "hello";
     }
 }
