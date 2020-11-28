@@ -9,6 +9,6 @@ logging:
     root: info
   file:
     max-size: 10MB
-    path: /logs
+    path: logs
     name: log
-    max-history: 36
+    max-history: 30
