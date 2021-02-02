@@ -2,6 +2,7 @@ package com.kingjakeu.springstudy.domain.member.controller;
 
 import com.kingjakeu.springstudy.domain.member.dao.MemberRepository;
 import com.kingjakeu.springstudy.domain.member.dto.MemberSignUpRequestDto;
+import com.kingjakeu.springstudy.domain.member.service.MemberService;
 import io.swagger.annotations.ApiOperation;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
@@ -11,6 +12,7 @@ import org.springframework.web.bind.annotation.*;
 @RequiredArgsConstructor
 public class MemberController {
 
+    private final MemberService memberService;
     private final MemberRepository memberRepository;
 
     @PostMapping("/signup")
@@ -21,6 +23,11 @@ public class MemberController {
 
     @GetMapping("/")
     public String getMember(){
-        return "hello";
+        return this.memberService.getMember();
+    }
+
+    @PostMapping("/change")
+    public void changeStatus(@RequestBody MemberSignUpRequestDto dto){
+        this.memberService.changeStatus(dto.toEntity());
     }
 }

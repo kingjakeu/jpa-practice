@@ -1,9 +1,6 @@
 package com.kingjakeu.springstudy.domain.member.domain;
 
-import lombok.AccessLevel;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -12,7 +9,7 @@ import javax.persistence.Id;
 
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Getter
-@Entity
+@Entity(name = "MEMBER")
 public class Member {
 
     @Id
@@ -25,6 +22,10 @@ public class Member {
 
     @Column(nullable = false)
     private String password;
+
+    @Setter
+    @Column(nullable = false)
+    private String statusCode;
 
     @Builder
     public Member(String userName, String password){
